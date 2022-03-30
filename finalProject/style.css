@@ -1,0 +1,45 @@
+body{
+    background-color: #f8ceec;
+    background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+}
+.card{
+    background-color: beige;
+    width: 75%;
+    max-width: 750px;
+    min-height: 50vh;
+    margin: 0 auto;
+    border-radius: 23px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+fieldset{
+    display:block;
+    width: 100%;
+}
+label{
+    cursor: pointer;
+    padding: .5rem;
+    background-color: #36096d;
+    margin: .125rem auto;
+    display: block;
+    width: 50%;
+    text-align: center;
+}
+label:hover{
+    background-color: #37d5d6;
+}
+input:checked + label{
+    border: 1px solid #36096d;
+    background-color: #37d5d6;
+}
+/* button{
+    background-color: #36096d;
+    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+} */
+.hidden{
+    display: none;
+}
