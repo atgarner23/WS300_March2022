@@ -93,7 +93,8 @@ quizData = [
               b_text = document.getElementById('b_text'),
               c_text = document.getElementById('c_text'),
               d_text = document.getElementById('d_text'),
-              submitBtn = document.getElementById('submit');
+              submitBtn = document.getElementById('submit'),
+              startBtn = document.getElementById('start-btn');
 
         let currentQuiz = 0;
         let score = 0;
@@ -135,7 +136,7 @@ quizData = [
     submitBtn.addEventListener('click', () =>{
         const answer = getSelected();
 
-        console.log(answer);
+        //console.log(answer);
 
         if(answer){
             if(answer === quizData[currentQuiz].correct){
@@ -151,7 +152,8 @@ quizData = [
                card.innerHTML = `<h1>You scored ${score}/${quizData.length}</h1> <button onclick="location.reload()">Reload</button`;
             }  
         };
-        
-
-        
-    });
+    });//closes submitBtn event listener
+    startBtn.addEventListener('click', () =>{
+        document.querySelector('.start').classList.add('hidden');
+        document.querySelector('.question').classList.remove('hidden');
+    });//closes startBtn Event listener

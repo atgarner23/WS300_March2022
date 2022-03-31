@@ -1,13 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Open+Sans:wght@300;400;700&family=Special+Elite&display=swap');
+
+/* font-family: 'Bigelow Rules', cursive; */
+/* font-family: 'Special Elite', cursive; */
 body{
     background-color: #f8ceec;
     background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
 }
+h1,h2{ 
+    font-family: 'Bigelow Rules', cursive;
+    font-size: 4rem;
+}
+/* .font8{font-family: 'Special Elite', cursive;} */
 .card{
     background-color: beige;
     width: 75%;
     max-width: 750px;
     min-height: 50vh;
-    margin: 0 auto;
+    margin: 25vh auto;
+    padding: 1.5rem;
     border-radius: 23px;
     display: flex;
     flex-direction: column;
@@ -24,10 +40,11 @@ label{
     cursor: pointer;
     padding: .5rem;
     background-color: #36096d;
-    margin: .125rem auto;
+    margin: .025rem auto;
     display: block;
     width: 50%;
     text-align: center;
+    border-radius: 10px;
 }
 label:hover{
     background-color: #37d5d6;
@@ -36,10 +53,16 @@ input:checked + label{
     border: 1px solid #36096d;
     background-color: #37d5d6;
 }
-/* button{
-    background-color: #36096d;
-    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
-} */
+p, label{
+    font-size: 1.5rem;
+    text-align: center;
+
+}
+button{
+    border-radius: 10px;
+    /* background-color: #36096d; */
+    /* background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%); */
+}
 .hidden{
     display: none;
 }
