@@ -3,8 +3,8 @@
 /* font-family: 'Bigelow Rules', cursive; */
 /* font-family: 'Special Elite', cursive; */
 body{
-    background-color: #f8ceec;
-    background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+    background-color: #37E5B0;
+    background-image: linear-gradient(315deg, #37E5B0 0%, #0092FF 100%);
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
@@ -15,14 +15,26 @@ body{
 h1,h2{ 
     font-family: 'Bigelow Rules', cursive;
     font-size: 4rem;
+    text-align: center;
+    line-height: 3.5rem;
+}
+h2{
+    font-size: 2.5rem;
+    line-height: 2.75rem;
+}
+h2 span{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: .75rem;
 }
 /* .font8{font-family: 'Special Elite', cursive;} */
 .card{
     background-color: beige;
-    width: 75%;
+    width: 90%;
     max-width: 750px;
     min-height: 50vh;
-    margin: 25vh auto;
+    margin: 5vh auto;
     padding: 1.5rem;
     border-radius: 23px;
     display: flex;
@@ -39,19 +51,22 @@ fieldset{
 label{
     cursor: pointer;
     padding: .5rem;
-    background-color: #36096d;
+    background-color: #37E5B0;
     margin: .025rem auto;
     display: block;
-    width: 50%;
+    width: 100%;
     text-align: center;
     border-radius: 10px;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
 }
-label:hover{
-    background-color: #37d5d6;
+label:hover,
+label:focus{
+    background-color: #0092FF;
 }
 input:checked + label{
-    border: 1px solid #36096d;
-    background-color: #37d5d6;
+    border: 5px solid #37E5B0;
+    background-color: #0092FF;
 }
 p, label{
     font-size: 1.5rem;
@@ -60,6 +75,9 @@ p, label{
 }
 button{
     border-radius: 10px;
+    background-color: #0092FF;
+    width: 100%;
+
     /* background-color: #36096d; */
     /* background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%); */
 }
