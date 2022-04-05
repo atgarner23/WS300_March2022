@@ -133,11 +133,20 @@ quizData = [
             }
         };//closes shuffle
 
+         function shuffleAnswer(){
+            var list = document.querySelector('.answer'), i;
+            for (i = list.children.length; i >= 0; i--) {
+                list.appendChild(list.children[Math.random() * i | 0]);
+            };
+        
+         };//closes shuffleAnswer
+
         shuffle(quizData);
         const randQuiz = quizData.slice(0, 10);
-        //shuffle(quizData.answer); //need to play around with this one some more have to figure out how to shuffle the answers. Probably need to make them an array within the question object and shuffle them
+        
 
         loadQuiz();
+        shuffleAnswer();
 
         function loadQuiz(){
             deselectAnswers();
@@ -148,7 +157,7 @@ quizData = [
             c_text.innerText = currentQuizData.a_3;
             d_text.innerText = currentQuizData.a_4;
 
-
+            
             
         };//end loadQuiz
 
@@ -174,14 +183,19 @@ quizData = [
     submitBtn.addEventListener('click', () =>{
         const answer = getSelected();
 
-        console.log(answer);
+        //console.log(answer);
 
         if(answer){
+            /*
+            if answer is correct add 1 to the score
+            
+            if currentQuiz is less than the length of the total quiz
+            */
             if(answer === randQuiz[currentQuiz].correct){
                 score++;
             }
             currentQuiz++;
-
+            //show modal window 
             if(currentQuiz < randQuiz.length){
                 loadQuiz();
             }else{
@@ -195,3 +209,10 @@ quizData = [
         document.querySelector('.start').classList.add('hidden');
         document.querySelector('.question').classList.remove('hidden');
     });//closes startBtn Event listener
+
+
+
+
+    //add a x/10 counter
+    //add a timer
+    //add correct and incorrect notifications maybe a modal
