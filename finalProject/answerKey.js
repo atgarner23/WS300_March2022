@@ -1,6 +1,6 @@
 quizData = [
     {
-        question: 'Which of these people are not original members of Fall Out Boy?',
+        question: 'Which of these people was NOT an original member of Fall Out Boy?',
         a_1: 'Pete Wentz',
         a_2: 'Joe Trohman',
         a_3: 'Patrick Stump',
@@ -9,7 +9,7 @@ quizData = [
     },
     {
         question: 'Match these lyrics to the song title: <br><span>"I\'m looking forward to the future, but my eyesight is going bad. And this crytal ball, it\'s always cloudy except for, when you look into the past."</span>',
-        a_1: 'thnks fr the mmrs',
+        a_1: 'Thnks fr the Mmrs',
         a_2: 'Sugar, We\'re Goin down',
         a_3: 'Of All The Gin Joints In All The World',
         a_4: 'Calm Before the Storm',
@@ -26,7 +26,7 @@ quizData = [
     {
         question: 'What is the name of Fall Out Boy\'s first studio album?',
         a_1: 'Take This to Your Grave',
-        a_2: 'From Under the cork Tree',
+        a_2: 'From Under the Cork Tree',
         a_3: 'Folie a Deux',
         a_4: 'Infinity on High',
         correct: 'a_1'
@@ -51,7 +51,7 @@ quizData = [
         question: 'Which of these bands produced 4 Platinum records for Fueled by Ramen?',
         a_1: 'Paramore',
         a_2: 'TwentyOnePilots',
-        a_3: 'Panic! at the disco',
+        a_3: 'Panic! at the Disco',
         a_4: 'Gym Class Heroes',
         correct: 'a_3'
     },
@@ -59,7 +59,7 @@ quizData = [
         question: 'Which state is Brendan Urie of Panic! at the Disco from?',
         a_1: 'Nevada',
         a_2: 'Utah',
-        a_3: 'Colrado',
+        a_3: 'Colorado',
         a_4: 'California',
         correct: 'a_2'
     },
@@ -81,7 +81,7 @@ quizData = [
     },
     {
         question: 'Match these lyrics to the song title: <br><span>"Oh, well in fact. We\'ll all look at it this way, I mean, technically, our marriage is saved. Well this calls for a toast. So pour the champagne, pour the champagne!"</span>',
-        a_1: 'I Write Sins not Tragedies',
+        a_1: 'I Write Sins Not Tragedies',
         a_2: 'The Green Gentleman',
         a_3: 'Death of a Bachelor',
         a_4: 'Emporer\'s New Clothes',
@@ -92,7 +92,7 @@ quizData = [
         a_1: 'Three Cheers to Sweet Revenge',
         a_2: 'I Brought You My Bullets, You Brought Me Your Love',
         a_3: 'The Black Parade',
-        a_4: 'Dange Days: The True Lives of the Fabulous Killjoys',
+        a_4: 'Danger Days: The True Lives of the Fabulous Killjoys',
         correct: 'a_2'
     },
     
@@ -216,3 +216,5 @@ quizData = [
     //add a x/10 counter
     //add a timer
     //add correct and incorrect notifications maybe a modal
+    //check spelling
+    //extra feedback on score card
