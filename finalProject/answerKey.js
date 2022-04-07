@@ -126,6 +126,28 @@ quizData = [
     let score = 0;
     let answer = undefined;
     let counter = 1;
+    let timeLeft = 60*5;
+    let display = document.getElementById('timer');
+
+    function startTimer(duration, display){
+        let start = Date.now(),
+            diff,
+            minutes,
+            seconds;
+        function timer(){
+            diff = duration - (((Date.now() - start) / 1000) | 0);
+            minutes = (diff / 60) | 0;
+            seconds = (diff % 60) | 0;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            display.textContent = minutes +':'+ seconds;
+            if (diff <= 0) {
+                start = Date.now() + 1000;
+            };
+        };//closes timer function
+        timer();
+        setInterval(timer, 1000);
+    };//closes startTimer
 
     function shuffle(array){
         for(let i =array.length-1; i > 0; i--){
@@ -184,6 +206,7 @@ quizData = [
     startBtn.addEventListener('click', () =>{
         document.querySelector('.start').classList.add('hidden');
         document.querySelector('.question').classList.remove('hidden');
+        startTimer(timeLeft, display);
     });//closes startBtn Event listener
 
     function openModal(){
@@ -212,7 +235,8 @@ quizData = [
                 loadQuiz();
             }else{
                 //show final card
-            card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
+            //card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
+                finalScore();
             } 
         };//closes closeModal
         window.onclick = function(event) {// When the user clicks anywhere outside of the modal, close it
