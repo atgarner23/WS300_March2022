@@ -125,6 +125,7 @@ quizData = [
     let currentQuiz = 0;
     let score = 0;
     let answer = undefined;
+    let counter = 1;
 
     function shuffle(array){
         for(let i =array.length-1; i > 0; i--){
@@ -157,21 +158,16 @@ quizData = [
         b_text.innerText = currentQuizData.a_2;
         c_text.innerText = currentQuizData.a_3;
         d_text.innerText = currentQuizData.a_4;
-
-        
-        
+        document.getElementById('counter').innerText = `${counter}/${randQuiz.length}`;
     };//end loadQuiz
 
     function getSelected(){
-        
         let answer = undefined;
-
         answerEls.forEach((answerEl) => {
             if(answerEl.checked){
                 answer = answerEl.id;
-            }
+            };
         });//closes forEach
-
         return answer;
     };//closes getSelected
 
@@ -182,73 +178,33 @@ quizData = [
     };//closes deselectAnswers
 
     submitBtn.addEventListener('click', () =>{
-        
         openModal();
-
     });//closes submitBtn event listener
 
-
     startBtn.addEventListener('click', () =>{
-       
         document.querySelector('.start').classList.add('hidden');
-       
         document.querySelector('.question').classList.remove('hidden');
-
     });//closes startBtn Event listener
-
-
-
-
- 
-
 
     function openModal(){
     // modal from w3 school
-
-        // Get the modal
-        let modal = document.getElementById("myModal");
-        
-        // Get the <span> element that closes the modal
-        let span = document.getElementsByClassName("close")[0];
+        let modal = document.getElementById("myModal");// Get the modal
+        let span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
         const answer = getSelected();//gets what is selected
-        
-        //opens the modal when function is run
-        modal.style.display = "block";
-
-
+        modal.style.display = "block";//opens the modal when function is run
         if(answer){
-            
             if(answer === randQuiz[currentQuiz].correct){
                 document.querySelector('.modal-content h3').innerText = `Correct!`;
                 score++;
-            }
+            };
             if(answer !== randQuiz[currentQuiz].correct){
-                document.querySelector('.modal-content h3').innerText = `Incorrect`;
+                document.querySelector('.modal-content h3').innerText = `Wrong!`;
                 document.querySelector('.modal-content p').innerText = `The right answer is: ${randQuiz[currentQuiz].a_1}`;
-            }
+            };
             currentQuiz++;
-            
-            
+            counter++;
         };
-        
-        
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-        modal.style.display = "none";
-        document.querySelector('.modal-content h3').innerText = ``;
-        document.querySelector('.modal-content p').innerText = ``;
-            if(currentQuiz < randQuiz.length){
-                loadQuiz();
-            }else{
-                //show final card
-            // alert('all done');
-            card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
-            } 
-        };//closes span.onclick
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
+        function closeModal(){
             modal.style.display = "none";
             document.querySelector('.modal-content h3').innerText = ``;
             document.querySelector('.modal-content p').innerText = ``;
@@ -256,14 +212,50 @@ quizData = [
                 loadQuiz();
             }else{
                 //show final card
-            // alert('all done');
             card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
             } 
-        }
+        };//closes closeModal
+        window.onclick = function(event) {// When the user clicks anywhere outside of the modal, close it
+            if (event.target == modal || event.target == span) {
+                closeModal();
+            };
         };//closes window.onclick
     };//closes openModal
 
+    
 
-    //add a x/10 counter
+    function finalScore(){
+        //get the score value
+        //compare score value to a list of predetermined catagories
+        //get the html from that catagorie
+        //display html on the final score card
+        switch (score){
+            case 0:
+            case 1:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Have you ever even heard Emo music?!</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 2:
+            case 3:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Hot Topic is a store in the mall right?</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 4:
+            case 5:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Not bad, but you have a ways to go.</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 6:
+            case 7:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>I bet you have been to Vans Warped Tour more than once haven't you?</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 8:
+            case 9:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>I'm impressed. Time to bust out that studded belt and head to Vegas. I'll see you at 'When We Were Young'</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 10:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Look, no one like a cheater. But I guess you made it this far so Congrats on being able to Google as well as me!</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            default:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
+        }
+    };//closes finalScore
+
     //add a timer
-    //extra feedback on score card
