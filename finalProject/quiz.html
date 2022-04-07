@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,46 @@
     <link rel="stylesheet" href="style.css">
     <title>Emo Trivia Nite</title>
 </head>
+
 <body>
     <div class="card start">
         <h1>Emo Night Trivia</h1>
         <p>Welcome to Emo Night Trivia! Test out how well you actually know your favorite emo bands and artists.</p>
         <button id="start-btn">Start</button>
     </div>
-    <div class="card question hidden"  id="card">
+    <div class="card question hidden" id="card">
+        <div id="counter"></div>
         <h2 id="question">Question 1</h2>
-        <fieldset class="answer" >
-            <div><input type="radio" name="answer" class="answers hidden" id="a_1"><label id="a_text" tabindex="0" for="a_1">A</label></div>
-            <div><input type="radio" name="answer" class="answers hidden" id="a_2"><label id="b_text" tabindex="0" for="a_2">b</label></div>
-            <div><input type="radio" name="answer" class="answers hidden" id="a_3"><label id="c_text" tabindex="0" for="a_3">c</label></div>
-            <div><input type="radio" name="answer" class="answers hidden" id="a_4"><label id="d_text" tabindex="0" for="a_4">d</label></div>
+        <fieldset class="answer">
+            <div><input type="radio" name="answer" class="answers hidden" id="a_1"><label id="a_text" tabindex="0"
+                    for="a_1">A</label></div>
+            <div><input type="radio" name="answer" class="answers hidden" id="a_2"><label id="b_text" tabindex="0"
+                    for="a_2">b</label></div>
+            <div><input type="radio" name="answer" class="answers hidden" id="a_3"><label id="c_text" tabindex="0"
+                    for="a_3">c</label></div>
+            <div><input type="radio" name="answer" class="answers hidden" id="a_4"><label id="d_text" tabindex="0"
+                    for="a_4">d</label></div>
         </fieldset>
         <button id="submit">Submit</button>
     </div>
 
+    <!-- Modal from W3schools https://www.w3schools.com/howto/howto_css_modals.asp-->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Correct</h3>
+            <p></p>
+        </div>
+
+    </div>
+
     <script src="answerKey.js"></script>
-    
+
 </body>
+
 </html>
 
 

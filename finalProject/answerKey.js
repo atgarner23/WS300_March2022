@@ -1,11 +1,11 @@
 quizData = [
     {
         question: 'Which of these people was NOT an original member of Fall Out Boy?',
-        a_1: 'Pete Wentz',
+        a_4: 'Pete Wentz',
         a_2: 'Joe Trohman',
         a_3: 'Patrick Stump',
-        a_4: 'Mike Pareskuwicz',
-        correct: 'a_4'
+        a_1: 'Mike Pareskuwicz',
+        correct: 'a_1'
     },
     {
         question: 'Match these lyrics to the song title: <br><span>"I\'m looking forward to the future, but my eyesight is going bad. And this crytal ball, it\'s always cloudy except for, when you look into the past."</span>',
@@ -49,35 +49,35 @@ quizData = [
     },
     {
         question: 'Which of these bands produced 4 Platinum records for Fueled by Ramen?',
-        a_1: 'Paramore',
+        a_3: 'Paramore',
         a_2: 'TwentyOnePilots',
-        a_3: 'Panic! at the Disco',
+        a_1: 'Panic! at the Disco',
         a_4: 'Gym Class Heroes',
-        correct: 'a_3'
+        correct: 'a_1'
     },
     {
         question: 'Which state is Brendan Urie of Panic! at the Disco from?',
-        a_1: 'Nevada',
-        a_2: 'Utah',
+        a_2: 'Nevada',
+        a_1: 'Utah',
         a_3: 'Colorado',
         a_4: 'California',
-        correct: 'a_2'
+        correct: 'a_1'
     },
     {
         question: 'What "band" is currently only comprised of 1 official member?',
-        a_1: 'Paramore',
+        a_3: 'Paramore',
         a_2: 'My Chemical Romance',
-        a_3: 'Panic! at the Disco',
+        a_1: 'Panic! at the Disco',
         a_4: 'The Used',
-        correct: 'a_3'
+        correct: 'a_1'
     },
     {
         question: 'Which of the following song titles does NOT belong to Panic! at the Disco?',
-        a_1: 'Lying is the Most Fun a Girl Can Have Without Taking Her Clothes Off',
-        a_2: 'Disloyal Order of the Water Buffaloes',
+        a_2: 'Lying is the Most Fun a Girl Can Have Without Taking Her Clothes Off',
+        a_1: 'Disloyal Order of the Water Buffaloes',
         a_3: 'The Only Difference Between Martyrdom and Suicide is Press Coverage',
         a_4: 'LA Devotee',
-        correct: 'a_2'
+        correct: 'a_1'
     },
     {
         question: 'Match these lyrics to the song title: <br><span>"Oh, well in fact. We\'ll all look at it this way, I mean, technically, our marriage is saved. Well this calls for a toast. So pour the champagne, pour the champagne!"</span>',
@@ -89,11 +89,11 @@ quizData = [
     },
     {
         question: 'Which of these was My Chemical Romance\'s First Studio Album?',
-        a_1: 'Three Cheers to Sweet Revenge',
-        a_2: 'I Brought You My Bullets, You Brought Me Your Love',
+        a_2: 'Three Cheers to Sweet Revenge',
+        a_1: 'I Brought You My Bullets, You Brought Me Your Love',
         a_3: 'The Black Parade',
         a_4: 'Danger Days: The True Lives of the Fabulous Killjoys',
-        correct: 'a_2'
+        correct: 'a_1'
     },
     
 ];
@@ -111,110 +111,151 @@ quizData = [
     */
 
 
-       //'use strict';
-       const answerEls = document.querySelectorAll('.answers');
-       const card = document.getElementById('card');
-        const questionEl = document.getElementById('question'),
-              a_text = document.getElementById('a_text'),
-              b_text = document.getElementById('b_text'),
-              c_text = document.getElementById('c_text'),
-              d_text = document.getElementById('d_text'),
-              submitBtn = document.getElementById('submit'),
-              startBtn = document.getElementById('start-btn');
+    //'use strict';
+    const answerEls = document.querySelectorAll('.answers');
+    const card = document.getElementById('card');
+    const questionEl = document.getElementById('question'),
+            a_text = document.getElementById('a_text'),
+            b_text = document.getElementById('b_text'),
+            c_text = document.getElementById('c_text'),
+            d_text = document.getElementById('d_text'),
+            submitBtn = document.getElementById('submit'),
+            startBtn = document.getElementById('start-btn');
 
-        let currentQuiz = 0;
-        let score = 0;
+    let currentQuiz = 0;
+    let score = 0;
+    let answer = undefined;
+    let counter = 1;
+
+    function shuffle(array){
+        for(let i =array.length-1; i > 0; i--){
+            let j = Math.floor( Math.random() * (i+1));// places j in a random spot in the array
+            [array[i], array[j]] = [array[j], array[i]]; //swaps places of index i and index j
+        }
+    };//closes shuffle
+
+        function shuffleAnswer(){
+        var list = document.querySelector('.answer'), i;
+        for (i = list.children.length; i >= 0; i--) {
+            list.appendChild(list.children[Math.random() * i | 0]);
+        };
+    
+        };//closes shuffleAnswer
+
+    shuffle(quizData);
+    const randQuiz = quizData.slice(0, 10);
+    
+
+    loadQuiz();
+
+    shuffleAnswer();
+
+    function loadQuiz(){
+        deselectAnswers();
+        const currentQuizData = randQuiz[currentQuiz];
+        questionEl.innerHTML = currentQuizData.question;
+        a_text.innerText = currentQuizData.a_1;
+        b_text.innerText = currentQuizData.a_2;
+        c_text.innerText = currentQuizData.a_3;
+        d_text.innerText = currentQuizData.a_4;
+        document.getElementById('counter').innerText = `${counter}/${randQuiz.length}`;
+    };//end loadQuiz
+
+    function getSelected(){
         let answer = undefined;
-
-        function shuffle(array){
-            for(let i =array.length-1; i > 0; i--){
-                let j = Math.floor( Math.random() * (i+1));// places j in a random spot in the array
-                [array[i], array[j]] = [array[j], array[i]]; //swaps places of index i and index j
-            }
-        };//closes shuffle
-
-         function shuffleAnswer(){
-            var list = document.querySelector('.answer'), i;
-            for (i = list.children.length; i >= 0; i--) {
-                list.appendChild(list.children[Math.random() * i | 0]);
+        answerEls.forEach((answerEl) => {
+            if(answerEl.checked){
+                answer = answerEl.id;
             };
-        
-         };//closes shuffleAnswer
+        });//closes forEach
+        return answer;
+    };//closes getSelected
 
-        shuffle(quizData);
-        const randQuiz = quizData.slice(0, 10);
-        
-
-        loadQuiz();
-        shuffleAnswer();
-
-        function loadQuiz(){
-            deselectAnswers();
-            const currentQuizData = randQuiz[currentQuiz];
-            questionEl.innerHTML = currentQuizData.question;
-            a_text.innerText = currentQuizData.a_1;
-            b_text.innerText = currentQuizData.a_2;
-            c_text.innerText = currentQuizData.a_3;
-            d_text.innerText = currentQuizData.a_4;
-
-            
-            
-        };//end loadQuiz
-
-        function getSelected(){
-           
-            let answer = undefined;
-
-            answerEls.forEach((answerEl) => {
-                if(answerEl.checked){
-                    answer = answerEl.id;
-                }
-            });//closes forEach
-
-            return answer;
-        }
-
-        function deselectAnswers(){
-            answerEls.forEach((answerEl) => {
-                answerEl.checked = false;
-            });//closes forEach
-        }
+    function deselectAnswers(){
+        answerEls.forEach((answerEl) => {
+            answerEl.checked = false;
+        });//closes forEach
+    };//closes deselectAnswers
 
     submitBtn.addEventListener('click', () =>{
-        const answer = getSelected();
-
-        //console.log(answer);
-
-        if(answer){
-            /*
-            if answer is correct add 1 to the score
-            
-            if currentQuiz is less than the length of the total quiz
-            */
-            if(answer === randQuiz[currentQuiz].correct){
-                score++;
-            }
-            currentQuiz++;
-            //show modal window 
-            if(currentQuiz < randQuiz.length){
-                loadQuiz();
-            }else{
-                //show final card
-               // alert('all done');
-               card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
-            }  
-        };
+        openModal();
     });//closes submitBtn event listener
+
     startBtn.addEventListener('click', () =>{
         document.querySelector('.start').classList.add('hidden');
         document.querySelector('.question').classList.remove('hidden');
     });//closes startBtn Event listener
 
+    function openModal(){
+    // modal from w3 school
+        let modal = document.getElementById("myModal");// Get the modal
+        let span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
+        const answer = getSelected();//gets what is selected
+        modal.style.display = "block";//opens the modal when function is run
+        if(answer){
+            if(answer === randQuiz[currentQuiz].correct){
+                document.querySelector('.modal-content h3').innerText = `Correct!`;
+                score++;
+            };
+            if(answer !== randQuiz[currentQuiz].correct){
+                document.querySelector('.modal-content h3').innerText = `Wrong!`;
+                document.querySelector('.modal-content p').innerText = `The right answer is: ${randQuiz[currentQuiz].a_1}`;
+            };
+            currentQuiz++;
+            counter++;
+        };
+        function closeModal(){
+            modal.style.display = "none";
+            document.querySelector('.modal-content h3').innerText = ``;
+            document.querySelector('.modal-content p').innerText = ``;
+            if(currentQuiz < randQuiz.length){
+                loadQuiz();
+            }else{
+                //show final card
+            card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
+            } 
+        };//closes closeModal
+        window.onclick = function(event) {// When the user clicks anywhere outside of the modal, close it
+            if (event.target == modal || event.target == span) {
+                closeModal();
+            };
+        };//closes window.onclick
+    };//closes openModal
 
+    
 
+    function finalScore(){
+        //get the score value
+        //compare score value to a list of predetermined catagories
+        //get the html from that catagorie
+        //display html on the final score card
+        switch (score){
+            case 0:
+            case 1:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Have you ever even heard Emo music?!</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 2:
+            case 3:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Hot Topic is a store in the mall right?</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 4:
+            case 5:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Not bad, but you have a ways to go.</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 6:
+            case 7:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>I bet you have been to Vans Warped Tour more than once haven't you?</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 8:
+            case 9:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>I'm impressed. Time to bust out that studded belt and head to Vegas. I'll see you at 'When We Were Young'</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            case 10:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <p>Look, no one like a cheater. But I guess you made it this far so Congrats on being able to Google as well as me!</p> <button onclick="location.reload()">Reload</button`; 
+            break;
+            default:
+                card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
+        }
+    };//closes finalScore
 
-    //add a x/10 counter
     //add a timer
-    //add correct and incorrect notifications maybe a modal
-    //check spelling
-    //extra feedback on score card
