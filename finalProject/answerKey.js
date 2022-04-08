@@ -126,28 +126,50 @@ quizData = [
     let score = 0;
     let answer = undefined;
     let counter = 1;
-    let timeLeft = 60*5;
+    let timeLeft = 10;
     let display = document.getElementById('timer');
+    
 
-    function startTimer(duration, display){
-        let start = Date.now(),
-            diff,
-            minutes,
-            seconds;
-        function timer(){
-            diff = duration - (((Date.now() - start) / 1000) | 0);
-            minutes = (diff / 60) | 0;
-            seconds = (diff % 60) | 0;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            display.textContent = minutes +':'+ seconds;
-            if (diff <= 0) {
-                start = Date.now() + 1000;
-            };
-        };//closes timer function
-        timer();
-        setInterval(timer, 1000);
+    function startTimer(timeLeft, display){
+        // let start = Date.now(),
+        //     diff,
+        //     minutes,
+        //     seconds,
+        //     timerInterval = setInterval(timer, 1000);
+        // function timer(){
+        //     diff = duration - (((Date.now() - start) / 1000) | 0);
+        //     minutes = (diff / 60) | 0;
+        //     seconds = (diff % 60) | 0;
+        //     minutes = minutes < 10 ? '0' + minutes : minutes;
+        //     seconds = seconds < 10 ? '0' + seconds : seconds;
+        //     display.textContent = minutes +':'+ seconds;
+        //     if (diff <= 0) {
+        //         //start = Date.now() + 1000;
+        //         clearInterval(timerInterval);
+        //         openModal();
+        //     };
+            
+        // };//closes timer function
+        // timer();
+        
+        var timerInterval = setInterval(timer, 1000);
+
+       // function timer(){
+            if(timeLeft == -1){
+                clearInterval(timerInterval);
+                openModal();
+            }else{
+                display.textContent = timeLeft;
+                timeLeft--;
+            }
+
+        //}
+        
+        //setTimeout(timer, 1000);
     };//closes startTimer
+    function stopTimer(){
+        clearInterval(timerInterval);
+    };//closes stopTimer
 
     function shuffle(array){
         for(let i =array.length-1; i > 0; i--){
@@ -181,6 +203,8 @@ quizData = [
         c_text.innerText = currentQuizData.a_3;
         d_text.innerText = currentQuizData.a_4;
         document.getElementById('counter').innerText = `${counter}/${randQuiz.length}`;
+        //clearInterval(timerInterval);
+
     };//end loadQuiz
 
     function getSelected(){
@@ -201,6 +225,7 @@ quizData = [
 
     submitBtn.addEventListener('click', () =>{
         openModal();
+        
     });//closes submitBtn event listener
 
     startBtn.addEventListener('click', () =>{
@@ -214,25 +239,28 @@ quizData = [
         let modal = document.getElementById("myModal");// Get the modal
         let span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
         const answer = getSelected();//gets what is selected
-        modal.style.display = "block";//opens the modal when function is run
-        if(answer){
+        modal.style.display = "block";//opens the modal when function is run\
+        //clearInterval(timerInterval);
+        
             if(answer === randQuiz[currentQuiz].correct){
                 document.querySelector('.modal-content h3').innerText = `Correct!`;
                 score++;
             };
-            if(answer !== randQuiz[currentQuiz].correct){
+            if(answer !== randQuiz[currentQuiz].correct || answer == undefined){
                 document.querySelector('.modal-content h3').innerText = `Wrong!`;
                 document.querySelector('.modal-content p').innerText = `The right answer is: ${randQuiz[currentQuiz].a_1}`;
             };
             currentQuiz++;
             counter++;
-        };
+        
+        
         function closeModal(){
             modal.style.display = "none";
             document.querySelector('.modal-content h3').innerText = ``;
             document.querySelector('.modal-content p').innerText = ``;
             if(currentQuiz < randQuiz.length){
                 loadQuiz();
+                startTimer(timeLeft, display);
             }else{
                 //show final card
             //card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
