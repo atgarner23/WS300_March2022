@@ -1,6 +1,6 @@
 quizData = [
     {
-        question: 'Which of these people was NOT an original member of Fall Out Boy?',
+        question: '<h2>Which of these people was NOT an original member of Fall Out Boy?</h2>',
         a_4: 'Pete Wentz',
         a_2: 'Joe Trohman',
         a_3: 'Patrick Stump',
@@ -8,7 +8,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Match these lyrics to the song title: <br><span>"I\'m looking forward to the future, but my eyesight is going bad. And this crytal ball, it\'s always cloudy except for, when you look into the past."</span>',
+        question: '<h2>Match these lyrics to the song title:</h2><q>I\'m looking forward to the future, but my eyesight is going bad. And this crytal ball, it\'s always cloudy except for, when you look into the past.</q>',
         a_1: 'Thnks fr the Mmrs',
         a_2: 'Sugar, We\'re Goin down',
         a_3: 'Of All The Gin Joints In All The World',
@@ -16,7 +16,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'What suburb of Chicago did Fall Out Boy form in?',
+        question: '<h2>What suburb of Chicago did Fall Out Boy form in?</h2>',
         a_1: 'Wilmette, IL',
         a_2: 'Winnetka, IL',
         a_3: 'Waukegan, IL',
@@ -24,7 +24,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'What is the name of Fall Out Boy\'s first studio album?',
+        question: '<h2>What is the name of Fall Out Boy\'s first studio album?</h2>',
         a_1: 'Take This to Your Grave',
         a_2: 'From Under the Cork Tree',
         a_3: 'Folie a Deux',
@@ -32,7 +32,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Which member of Fall Out Boy starred in an episode of Law and Order?',
+        question: '<h2>Which member of Fall Out Boy starred in an episode of Law and Order?</h2>',
         a_1: 'Patrick Stump',
         a_2: 'Pete Wentz',
         a_3: 'Andy Hurley',
@@ -40,7 +40,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Fall Out Boy Bassist/Lyricist Pete Wentz Co-Founded which of these Emo record labels?',
+        question: '<h2>Fall Out Boy Bassist/Lyricist Pete Wentz Co-Founded which of these Emo record labels?</h2>',
         a_1: 'Fueled By Ramen',
         a_2: 'Decadynce',
         a_3: 'Epitaph',
@@ -48,7 +48,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Which of these bands produced 4 Platinum records for Fueled by Ramen?',
+        question: '<h2>Which of these bands produced 4 Platinum records for Fueled by Ramen</h2>?',
         a_3: 'Paramore',
         a_2: 'TwentyOnePilots',
         a_1: 'Panic! at the Disco',
@@ -56,7 +56,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Which state is Brendan Urie of Panic! at the Disco from?',
+        question: '<h2>Which state is Brendan Urie of Panic! at the Disco from?</h2>',
         a_2: 'Nevada',
         a_1: 'Utah',
         a_3: 'Colorado',
@@ -64,7 +64,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'What "band" is currently only comprised of 1 official member?',
+        question: '<h2>What "band" is currently only comprised of 1 official member?</h2>',
         a_3: 'Paramore',
         a_2: 'My Chemical Romance',
         a_1: 'Panic! at the Disco',
@@ -72,7 +72,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Which of the following song titles does NOT belong to Panic! at the Disco?',
+        question: '<h2>Which of the following song titles does NOT belong to Panic! at the Disco?</h2>',
         a_2: 'Lying is the Most Fun a Girl Can Have Without Taking Her Clothes Off',
         a_1: 'Disloyal Order of the Water Buffaloes',
         a_3: 'The Only Difference Between Martyrdom and Suicide is Press Coverage',
@@ -80,7 +80,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Match these lyrics to the song title: <br><span>"Oh, well in fact. We\'ll all look at it this way, I mean, technically, our marriage is saved. Well this calls for a toast. So pour the champagne, pour the champagne!"</span>',
+        question: '<h2>Match these lyrics to the song title: </h2><q>Oh, well in fact. We\'ll all look at it this way, I mean, technically, our marriage is saved. Well this calls for a toast. So pour the champagne, pour the champagne!</q>',
         a_1: 'I Write Sins Not Tragedies',
         a_2: 'The Green Gentleman',
         a_3: 'Death of a Bachelor',
@@ -88,7 +88,7 @@ quizData = [
         correct: 'a_1'
     },
     {
-        question: 'Which of these was My Chemical Romance\'s First Studio Album?',
+        question: '<h2>Which of these was My Chemical Romance\'s First Studio Album?</h2>',
         a_2: 'Three Cheers to Sweet Revenge',
         a_1: 'I Brought You My Bullets, You Brought Me Your Love',
         a_3: 'The Black Parade',
@@ -126,13 +126,13 @@ quizData = [
     let score = 0;
     let answer = undefined;
     let counter = 1;
-    let timeLeft = 10;
+    let timeLeft = 30;
     var countdown;
 
     
      function startTimer(){
         
-        document.getElementById("timer").innerHTML = timeLeft + " seconds remaining";
+        document.getElementById("timer").innerHTML = timeLeft + " seconds";
         timeLeft--;
         if(timeLeft >= 0){
             countdown = setTimeout(startTimer,1000);
@@ -239,7 +239,7 @@ quizData = [
             document.querySelector('.modal-content p').innerText = ``;
             if(currentQuiz < randQuiz.length){
                 loadQuiz();
-                timeLeft = 10;
+                timeLeft = 30;
                 startTimer();
             }else{
                 //show final card
