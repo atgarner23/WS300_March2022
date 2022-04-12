@@ -277,11 +277,16 @@ quizData = [
                 finalScore();
             } 
         };//closes closeModal
-        window.onclick = function(event) {// When the user clicks anywhere outside of the modal, close it
+        window.addEventListener('click', function(event) {// When the user clicks anywhere outside of the modal, close it
             if (event.target == modal || event.target == span) {
                 closeModal();
             };
-        };//closes window.onclick
+        });//closes click event listener
+        window.addEventListener('touchstart', function(event) {// When the user clicks anywhere outside of the modal, close it
+            if (event.target == modal || event.target == span) {
+                closeModal();
+            };
+        });//closes click event listener
     };//closes openModal
 
     
