@@ -127,49 +127,27 @@ quizData = [
     let answer = undefined;
     let counter = 1;
     let timeLeft = 10;
-    let display = document.getElementById('timer');
+    var countdown;
+
     
-
-    function startTimer(timeLeft, display){
-        // let start = Date.now(),
-        //     diff,
-        //     minutes,
-        //     seconds,
-        //     timerInterval = setInterval(timer, 1000);
-        // function timer(){
-        //     diff = duration - (((Date.now() - start) / 1000) | 0);
-        //     minutes = (diff / 60) | 0;
-        //     seconds = (diff % 60) | 0;
-        //     minutes = minutes < 10 ? '0' + minutes : minutes;
-        //     seconds = seconds < 10 ? '0' + seconds : seconds;
-        //     display.textContent = minutes +':'+ seconds;
-        //     if (diff <= 0) {
-        //         //start = Date.now() + 1000;
-        //         clearInterval(timerInterval);
-        //         openModal();
-        //     };
-            
-        // };//closes timer function
-        // timer();
+     function startTimer(){
         
-        var timerInterval = setInterval(timer, 1000);
-
-       // function timer(){
-            if(timeLeft == -1){
-                clearInterval(timerInterval);
-                openModal();
-            }else{
-                display.textContent = timeLeft;
-                timeLeft--;
-            }
-
-        //}
+        document.getElementById("timer").innerHTML = timeLeft + " seconds remaining";
+        timeLeft--;
+        if(timeLeft >= 0){
+            countdown = setTimeout(startTimer,1000);
+        }
+        if(timeLeft < 0){
+            openModal();
+        }
         
-        //setTimeout(timer, 1000);
-    };//closes startTimer
-    function stopTimer(){
-        clearInterval(timerInterval);
-    };//closes stopTimer
+     };//close startTimer
+    
+     function endTimer(){
+        clearTimeout(countdown);
+    };//close endTimer
+
+    
 
     function shuffle(array){
         for(let i =array.length-1; i > 0; i--){
@@ -203,7 +181,6 @@ quizData = [
         c_text.innerText = currentQuizData.a_3;
         d_text.innerText = currentQuizData.a_4;
         document.getElementById('counter').innerText = `${counter}/${randQuiz.length}`;
-        //clearInterval(timerInterval);
 
     };//end loadQuiz
 
@@ -231,7 +208,7 @@ quizData = [
     startBtn.addEventListener('click', () =>{
         document.querySelector('.start').classList.add('hidden');
         document.querySelector('.question').classList.remove('hidden');
-        startTimer(timeLeft, display);
+        startTimer();
     });//closes startBtn Event listener
 
     function openModal(){
@@ -240,8 +217,7 @@ quizData = [
         let span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
         const answer = getSelected();//gets what is selected
         modal.style.display = "block";//opens the modal when function is run\
-        //clearInterval(timerInterval);
-        
+        endTimer();
             if(answer === randQuiz[currentQuiz].correct){
                 document.querySelector('.modal-content h3').innerText = `Correct!`;
                 score++;
@@ -250,6 +226,9 @@ quizData = [
                 document.querySelector('.modal-content h3').innerText = `Wrong!`;
                 document.querySelector('.modal-content p').innerText = `The right answer is: ${randQuiz[currentQuiz].a_1}`;
             };
+            if(timeLeft <= 0){
+                document.querySelector('.modal-content h3').innerText = `Out of Time!`;
+            }
             currentQuiz++;
             counter++;
         
@@ -260,7 +239,8 @@ quizData = [
             document.querySelector('.modal-content p').innerText = ``;
             if(currentQuiz < randQuiz.length){
                 loadQuiz();
-                startTimer(timeLeft, display);
+                timeLeft = 10;
+                startTimer();
             }else{
                 //show final card
             //card.innerHTML = `<h1>You scored ${score}/${randQuiz.length}</h1> <button onclick="location.reload()">Reload</button`;
