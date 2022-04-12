@@ -5,7 +5,6 @@ quizData = [
         a_2: 'Joe Trohman',
         a_3: 'Patrick Stump',
         a_1: 'Mike Pareskuwicz',
-        correct: 'a_1'
     },
     {
         question: '<h2>Match these lyrics to the song title:</h2><q>I\'m looking forward to the future, but my eyesight is going bad. And this crytal ball, it\'s always cloudy except for, when you look into the past.</q>',
@@ -13,7 +12,6 @@ quizData = [
         a_2: 'Sugar, We\'re Goin down',
         a_3: 'Of All The Gin Joints In All The World',
         a_4: 'Calm Before the Storm',
-        correct: 'a_1'
     },
     {
         question: '<h2>What suburb of Chicago did Fall Out Boy form in?</h2>',
@@ -21,7 +19,6 @@ quizData = [
         a_2: 'Winnetka, IL',
         a_3: 'Waukegan, IL',
         a_4: 'Evanson, IL',
-        correct: 'a_1'
     },
     {
         question: '<h2>What is the name of Fall Out Boy\'s first studio album?</h2>',
@@ -29,7 +26,6 @@ quizData = [
         a_2: 'From Under the Cork Tree',
         a_3: 'Folie a Deux',
         a_4: 'Infinity on High',
-        correct: 'a_1'
     },
     {
         question: '<h2>Which member of Fall Out Boy starred in an episode of Law and Order?</h2>',
@@ -37,7 +33,6 @@ quizData = [
         a_2: 'Pete Wentz',
         a_3: 'Andy Hurley',
         a_4: 'Joe Trohman',
-        correct: 'a_1'
     },
     {
         question: '<h2>Fall Out Boy Bassist/Lyricist Pete Wentz Co-Founded which of these Emo record labels?</h2>',
@@ -45,7 +40,6 @@ quizData = [
         a_2: 'Decadynce',
         a_3: 'Epitaph',
         a_4: 'Victory',
-        correct: 'a_1'
     },
     {
         question: '<h2>Which of these bands produced 4 Platinum records for Fueled by Ramen</h2>?',
@@ -53,7 +47,6 @@ quizData = [
         a_2: 'TwentyOnePilots',
         a_1: 'Panic! at the Disco',
         a_4: 'Gym Class Heroes',
-        correct: 'a_1'
     },
     {
         question: '<h2>Which state is Brendan Urie of Panic! at the Disco from?</h2>',
@@ -61,7 +54,6 @@ quizData = [
         a_1: 'Utah',
         a_3: 'Colorado',
         a_4: 'California',
-        correct: 'a_1'
     },
     {
         question: '<h2>What "band" is currently only comprised of 1 official member?</h2>',
@@ -69,7 +61,6 @@ quizData = [
         a_2: 'My Chemical Romance',
         a_1: 'Panic! at the Disco',
         a_4: 'The Used',
-        correct: 'a_1'
     },
     {
         question: '<h2>Which of the following song titles does NOT belong to Panic! at the Disco?</h2>',
@@ -77,7 +68,6 @@ quizData = [
         a_1: 'Disloyal Order of the Water Buffaloes',
         a_3: 'The Only Difference Between Martyrdom and Suicide is Press Coverage',
         a_4: 'LA Devotee',
-        correct: 'a_1'
     },
     {
         question: '<h2>Match these lyrics to the song title: </h2><q>Oh, well in fact. We\'ll all look at it this way, I mean, technically, our marriage is saved. Well this calls for a toast. So pour the champagne, pour the champagne!</q>',
@@ -85,7 +75,6 @@ quizData = [
         a_2: 'The Green Gentleman',
         a_3: 'Death of a Bachelor',
         a_4: 'Emporer\'s New Clothes',
-        correct: 'a_1'
     },
     {
         question: '<h2>Which of these was My Chemical Romance\'s First Studio Album?</h2>',
@@ -93,7 +82,6 @@ quizData = [
         a_1: 'I Brought You My Bullets, You Brought Me Your Love',
         a_3: 'The Black Parade',
         a_4: 'Danger Days: The True Lives of the Fabulous Killjoys',
-        correct: 'a_1'
     },
     
 ];
@@ -218,11 +206,11 @@ quizData = [
         const answer = getSelected();//gets what is selected
         modal.style.display = "block";//opens the modal when function is run\
         endTimer();
-            if(answer === randQuiz[currentQuiz].correct){
+            if(answer === 'a_1'){
                 document.querySelector('.modal-content h3').innerText = `Correct!`;
                 score++;
             };
-            if(answer !== randQuiz[currentQuiz].correct || answer == undefined){
+            if(answer !== 'a_1' || answer == undefined){
                 document.querySelector('.modal-content h3').innerText = `Wrong!`;
                 document.querySelector('.modal-content p').innerText = `The right answer is: ${randQuiz[currentQuiz].a_1}`;
             };
