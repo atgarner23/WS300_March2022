@@ -83,6 +83,48 @@ quizData = [
         a_3: 'The Black Parade',
         a_4: 'Danger Days: The True Lives of the Fabulous Killjoys',
     },
+    {
+        question: '<h2>What state did Paramore form in?</h2>',
+        a_2: 'Arkansas',
+        a_1: 'Tennessee',
+        a_3: 'Alabama',
+        a_4: 'West Virginia',
+    },
+    {
+        question: '<h2>What is the name of Paramore\'s first studio album?</h2>',
+        a_1: 'All We Know is Falling',
+        a_2: 'Riot!',
+        a_3: 'Brand New Eyes',
+        a_4: 'Paramore',
+    },
+    {
+        question: '<h2>Which song has Hayley Williams said was one of her biggest regrets?</h2>',
+        a_1: 'Misery Business',
+        a_2: 'Crushcrushcrush',
+        a_3: 'That\'s What You Get',
+        a_4: 'Brick by Boring Brick',
+    },
+    {
+        question: '<h2>Which band used to host a bible study while on tour?</h2>',
+        a_1: 'Paramore',
+        a_2: 'Panic! at the Disco',
+        a_3: 'Thrice',
+        a_4: 'We the Kings',
+    },
+    {
+        question: '<h2>Match the song to these lyrics:</h2><q>"Where you\'re from You might be the one who\'s running things Where you can ring anybody\'s bell and get what you want See it\'s easy to ignore trouble When you\'re living in a bubble"</q>',
+        a_1: 'Ain\'t It Fun',
+        a_2: 'Misery Business',
+        a_3: 'Decode',
+        a_4: 'Crushcrushcrush',
+    },
+    // {
+    //     question: '<h2></h2>',
+    //     a_1: '',
+    //     a_2: '',
+    //     a_3: '',
+    //     a_4: '',
+    // },
     
 ];
 
