@@ -1,3 +1,6 @@
+(() => {
+    
+  
 quizData = [
     {
         question: '<h2>Which of these people was NOT an original member of Fall Out Boy?</h2>',
@@ -326,3 +329,4 @@ quizData = [
     };//closes finalScore
 
     //add a timer
+})();
