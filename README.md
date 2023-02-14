@@ -1,4 +1,4 @@
-# WS300_March2022
+# Emo Nite Trivia
 Class repository for WS300-Platt College San Diego
 
 This is the repository dedicated to work associated with the WS300 Javascript class I am taking at Platt College San Diego.
